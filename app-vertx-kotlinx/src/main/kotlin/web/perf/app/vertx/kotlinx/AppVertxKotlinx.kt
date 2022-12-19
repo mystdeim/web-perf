@@ -33,8 +33,7 @@ class WebVerticle : CoroutineVerticle() {
         router.route().handler(BodyHandler.create())
         router.route().handler(TimeoutHandler.create(5000))
         router.get("/api/v1/test").coroutineHandler {
-//            it.end(Json.encodeToString(SimpleModel("test", Instant.now())))
-            it.end("Ok!")
+            it.end(Json.encodeToString(SimpleModel("test", Instant.now())))
         }
         http.requestHandler(router)
         http.listen(8080).await()
